@@ -8,6 +8,7 @@ const Note = (props) => {
   const [description, setDescription] = useState("");
 
   const onChange = (event) => {
+    console.log( event.target.value)
     switch (event.target.name) {
       case "noteName":
         setName(event.target.value);
@@ -21,17 +22,25 @@ const Note = (props) => {
   };
 
   const handleClick = () => {
-    localStorage.setItem('note',JSON.stringify([{'name':name,'description':description}]));
+    localStorage.setItem(
+      "note",
+      JSON.stringify([{ name: name, description: description }])
+    );
   };
 
   const handleLoad = () => {
-    localStorage.getItem(val=>(console.log(val)));
-    // localStorage.setItem(name, description);
+    let data = JSON.parse(localStorage.getItem("note"));
+    console.log(data[0]);
+    setName(data[0].name);
+    setDescription(data[0].description);
   };
 
   return (
     <div className="header">
       <TextField
+        sx={{
+          bgcolor: "white",
+        }}
         id="outlined"
         name="noteName"
         onChange={onChange}
@@ -39,6 +48,9 @@ const Note = (props) => {
         value={name}
       ></TextField>
       <TextField
+        sx={{
+          bgcolor: "white",
+        }}
         id="outlined-multiline-static"
         label="Note Description"
         name="noteDescription"
