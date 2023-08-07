@@ -1,0 +1,10 @@
+.header {
+    background-color: rgba(245, 241, 241, 0.982);
+    border: solid 0.5px rgba(0, 0, 0, 0.316);
+    border-radius: 2%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: space-evenly;
+  }
